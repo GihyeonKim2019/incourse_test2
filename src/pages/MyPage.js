@@ -9,7 +9,11 @@ function MyPage() {
     <WholeDiv>
       <div className="contentdiv">
         <div className="mypage-header-text">안녕하세요, {userNickname}님</div>
-        <img className="mypage-user-photo" src={userPhoto} />
+        <img
+          className="mypage-user-photo"
+          src={userPhoto}
+          alt="인코스 my page user"
+        />
         <div className="userinfo-title-text">회원 정보</div>
         <div className="userinfo-contentdiv">
           <div className="userinfo-li">

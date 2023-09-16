@@ -2,17 +2,9 @@ import styled from "styled-components";
 import todayStoryThumbnail from "../images/today_story_thumbnail.png";
 import iconArrowLeft from "../images/icon_arrow_left.png";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  orderBy,
-  limit,
-  startAfter,
-} from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { db } from "../firebase_config";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function firestoreTimestampToFormattedDate(timestamp) {
   const xdate = new Date(timestamp.seconds * 1000);
@@ -34,9 +26,9 @@ function firestoreTimestampToFormattedDate(timestamp) {
 }
 
 function Home() {
-  const currentTime = new Date();
-  const [listings, setListings] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const currentTime = new Date();
+  // const [listings, setListings] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [todayStory, setTodayStory] = useState({
     articleTitle: "",
     articleNum: 1,
@@ -51,59 +43,7 @@ function Home() {
   const [enterButtonClickable, setEnterButtonClickable] = useState(false);
   const [publishTimePassed, setPublishTimePassed] = useState(false);
 
-  useEffect(() => {
-    {
-      const interval = setInterval(() => {
-        const now = new Date();
-        const timestampDate = new Date(todayPublishTime.seconds * 1000);
-        const timeDiff = timestampDate - now;
-
-        if (timeDiff > 0) {
-          const hours = Math.floor(timeDiff / (1000 * 60 * 60));
-          const minutes = Math.floor(
-            (timeDiff % (1000 * 60 * 60)) / (1000 * 60)
-          );
-          const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
-          setButtonText(
-            `오픈까지 ${String(hours).padStart(2, "0")}:${String(
-              minutes
-            ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
-          );
-          setExpectedText("오픈예정");
-          setPublishTimePassed(false);
-        } else {
-          setPublishTimePassed(true);
-          setButtonText("읽기");
-          setExpectedText("");
-          clearInterval(interval);
-          fetchListings();
-        }
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }
-  }, [todayPublishTime]);
-
-  useEffect(() => {
-    fetchListings();
-  }, []);
-
-  const navigate = useNavigate();
-
-  function enterButtonOnClick() {
-    const isLogined = localStorage.getItem("incourse_islogined");
-    console.log("enterButtonOnClick executed");
-    if (enterButtonClickable && isLogined == "true") {
-      navigate(`/storyview/${todayStory.articleNum}`);
-    } else if (!enterButtonClickable && isLogined) {
-      console.log("아티클 soldout");
-    } else if (!isLogined) {
-      navigate("/login");
-    }
-  }
-
-  const fetchListings = async () => {
+  const fetchListings = useCallback(async () => {
     try {
       const listingRef = collection(db, "article");
       const q = query(listingRef, orderBy("articleNum", "desc"), limit(1));
@@ -143,42 +83,61 @@ function Home() {
       console.log(enterButtonClickable);
       console.log(publishTimePassed);
 
-      // var tempToday = {
-      //   articleTitle: "",
-      //   articleNum: 1,
-      //   joiners: [],
-      //   publishTime: 2694816187000,
-      //   soldoutTime: 2694826187000,
-      //   apexText: "",
-      // };
-      // listings.forEach((item) => {
-      //   const itemTime = new Date(item.data.publishTime.seconds * 1000);
-      //   // console.log(itemTime - currentTime);
-      //   // console.log("item.data.publishTime: ", itemTime);
-      //   // console.log("currentTime: ", currentTime);
-      //   if (itemTime > currentTime && itemTime < tempToday.publishTime) {
-      //     tempToday = {
-      //       articleTitle: item.data.articleTitle,
-      //       articleNum: item.data.articleNum,
-      //       joiners: item.data.joiners,
-      //       publishTime: itemTime,
-      //       soldoutTime: item.data.soldoutTime,
-      //       apexText: item.data.apexText,
-      //     };
-      //   }
-      // });
-
-      // setTodayStory(tempToday);
-      // console.log(tempToday);
-      // setTodayPublishTime(new Date(tempToday.publishTime * 1000));
-
       console.log("야", listings);
-      setListings(listings);
-      setLoading(false);
+      // setListings(listings);
+      // setLoading(false);
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [enterButtonClickable, publishTimePassed]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const timestampDate = new Date(todayPublishTime.seconds * 1000);
+      const timeDiff = timestampDate - now;
+
+      if (timeDiff > 0) {
+        const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        setButtonText(
+          `오픈까지 ${String(hours).padStart(2, "0")}:${String(
+            minutes
+          ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
+        );
+        setExpectedText("오픈예정");
+        setPublishTimePassed(false);
+      } else {
+        setPublishTimePassed(true);
+        setButtonText("읽기");
+        setExpectedText("");
+        clearInterval(interval);
+        fetchListings();
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [todayPublishTime, fetchListings]);
+
+  useEffect(() => {
+    fetchListings();
+  }, [fetchListings]);
+
+  const navigate = useNavigate();
+
+  function enterButtonOnClick() {
+    const isLogined = localStorage.getItem("incourse_islogined");
+    console.log("enterButtonOnClick executed");
+    if (enterButtonClickable && isLogined === "true") {
+      navigate(`/storyview/${todayStory.articleNum}`);
+    } else if (!enterButtonClickable && isLogined) {
+      console.log("아티클 soldout");
+    } else if (!isLogined) {
+      navigate("/login");
+    }
+  }
 
   return (
     <WholeDiv>
@@ -190,7 +149,11 @@ function Home() {
         </div>
         <div className="today-story-contentdiv">
           <div className="today-story-leftdiv">
-            <img className="today-story-image" src={todayStoryThumbnail} />
+            <img
+              className="today-story-image"
+              src={todayStoryThumbnail}
+              alt="today story"
+            />
             <div className="today-story-title">{todayStory.articleTitle}</div>
           </div>
           <div className="today-story-centerdiv"></div>
@@ -256,6 +219,7 @@ function Home() {
             <img
               src={iconArrowLeft}
               className="incourse-introduce-content-button-logo"
+              alt="incourse 인코스 더 알아보기"
             />
           </Link>
         </div>

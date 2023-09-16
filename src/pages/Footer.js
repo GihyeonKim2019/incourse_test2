@@ -5,7 +5,11 @@ function Footer() {
   return (
     <WholeDiv>
       <div className="footerdiv">
-        <img className="logo-title-image" src={logoTitleImg} />
+        <img
+          className="logo-title-image"
+          src={logoTitleImg}
+          alt="인코스, 가장 빠른 비즈니스 지름길"
+        />
         <div className="content-leftdiv">
           <div className="business-name">(주)인코스코퍼레이션</div>
           <div className="business-info-div">

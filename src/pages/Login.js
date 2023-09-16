@@ -8,13 +8,17 @@ function Login() {
     <WholeDiv>
       <div className="logindiv">
         <div className="loginbox">
-          <img className="logo-symbol-image" src={logoSymbolImage} />
+          <img
+            className="logo-symbol-image"
+            src={logoSymbolImage}
+            alt="인코스 1인 기업가 비즈니스 교육"
+          />
           <div className="loginbox-text-1">가장 빠른 비즈니스 지름길,</div>
           <div className="loginbox-text-2">인코스</div>
           <div className="loginbox-buttonbox">
             <GoogleSignin />
             <div className="buttondiv-kakao">
-              <img className="buttondiv-kakao-logo" />
+              <img className="buttondiv-kakao-logo" alt="카카오로 로그인하기" />
               <div className="buttondiv-kakao-text">
                 카카오로 1초만에 로그인
               </div>

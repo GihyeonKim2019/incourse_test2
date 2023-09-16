@@ -15,7 +15,11 @@ function Us() {
           <div className="div1-content-leftdiv"></div>
           <div className="div1-content-rightdiv">
             <div className="div1-title1">가장 빠른 비즈니스 지름길,</div>
-            <img className="div1-logo-image" src={logoTitleImage} />
+            <img
+              className="div1-logo-image"
+              src={logoTitleImage}
+              alt="incourse 인코스 비즈니스 뉴스레터 1인 기업가 디지털노마드 디지털 노마드"
+            />
             <div className="div1-subtitle">
               '지금 한국에서 하면 돈 되는 정보' <br></br>인코스 뉴스레터가
               전합니다.
@@ -108,7 +112,11 @@ function Us() {
             </div>
             <div className="div5-buttondiv">
               <div className="div5-button-text">회원가입하기</div>
-              <img className="div5-button-logo" src={iconArrowLeft} />
+              <img
+                className="div5-button-logo"
+                src={iconArrowLeft}
+                alt="인코스 회원가입 incourse 1인 기업가"
+              />
             </div>
           </div>
         </div>

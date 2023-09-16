@@ -23,7 +23,7 @@ function GoogleSignin(props) {
 
   return (
     <div onClick={signInWithGoogle} className="buttondiv-google">
-      <img className="buttondiv-google-logo" />
+      <img className="buttondiv-google-logo" alt="continue with google login" />
       <div className="buttondiv-google-text">Continue with google</div>
     </div>
   );

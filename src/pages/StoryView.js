@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import logoSymbol2 from "../images/logo_symbol_2.png";
 import storyScoreBanner from "../images/story_score_banner.png";
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+// import { initializeApp } from "firebase/app";
+// import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import {
-  getFirestore,
+  // getFirestore,
   collection,
   query,
   where,
@@ -38,10 +38,10 @@ function firestoreTimestampToFormattedDate(timestamp) {
 function StoryView() {
   const { articleNum } = useParams();
 
-  const [storyTitle, setStoryTitle] = useState(
-    "23살에 음료수 브랜드를 월 110만 달러 규모로 성장시킨 비결"
-  );
-  const [storyTime, setStoryTime] = useState("2023.08.27(수) 11:00:00");
+  // const [storyTitle, setStoryTitle] = useState(
+  //   "23살에 음료수 브랜드를 월 110만 달러 규모로 성장시킨 비결"
+  // );
+  // const [storyTime, setStoryTime] = useState("2023.08.27(수) 11:00:00");
   const [scoreNumber, setScoreNumber] = useState(1);
 
   const [article, setArticle] = useState(null);
@@ -83,7 +83,7 @@ function StoryView() {
     }
 
     fetchArticle();
-  }, []);
+  }, [articleNum]);
 
   useEffect(() => {
     if (article) {

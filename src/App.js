@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
 import { Reset } from "styled-reset";
-import axios from "axios";
 
 import "./fonts/pretendardvariable.css";
 import "./global.css";
@@ -16,17 +14,6 @@ import MyPage from "./pages/MyPage";
 import StoryView from "./pages/StoryView";
 
 function App() {
-  const [message, setMessage] = useState("");
-
-  const handleClick = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/click");
-      setMessage(response.data.message);
-    } catch (error) {
-      console.error("There was an error!", error);
-    }
-  };
-
   return (
     <BrowserRouter>
       <div
