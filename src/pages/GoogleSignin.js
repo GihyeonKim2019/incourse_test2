@@ -3,6 +3,7 @@ import "firebase/auth";
 import { signInWithGoogle } from "../firebase_config";
 import { auth } from "../firebase_config";
 import { useNavigate } from "react-router-dom";
+import loginIconGoogle from "../images/login_icon_google.png";
 
 function GoogleSignin(props) {
   const navigate = useNavigate();
@@ -23,7 +24,11 @@ function GoogleSignin(props) {
 
   return (
     <div onClick={signInWithGoogle} className="buttondiv-google">
-      <img className="buttondiv-google-logo" alt="continue with google login" />
+      <img
+        className="buttondiv-google-logo"
+        src={loginIconGoogle}
+        alt="continue with google login"
+      />
       <div className="buttondiv-google-text">Continue with google</div>
     </div>
   );

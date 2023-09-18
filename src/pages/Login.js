@@ -2,6 +2,8 @@ import styled from "styled-components";
 import loginBackgroundImage from "../images/background_f1.png";
 import logoSymbolImage from "../images/logo_symbol.png";
 import GoogleSignin from "./GoogleSignin";
+import loginIconGoogle from "../images/login_icon_google.png";
+import loginIconKakao from "../images/login_icon_kakao.png";
 
 function Login() {
   return (
@@ -18,7 +20,11 @@ function Login() {
           <div className="loginbox-buttonbox">
             <GoogleSignin />
             <div className="buttondiv-kakao">
-              <img className="buttondiv-kakao-logo" alt="카카오로 로그인하기" />
+              <img
+                className="buttondiv-kakao-logo"
+                src={loginIconKakao}
+                alt="카카오로 로그인하기"
+              />
               <div className="buttondiv-kakao-text">
                 카카오로 1초만에 로그인
               </div>

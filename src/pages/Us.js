@@ -133,7 +133,7 @@ const WholeDiv = styled.div`
   .div1 {
     background-color: black;
     background-image: url(${backgroundImage1});
-    background-size: contain;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 1230px;
@@ -181,7 +181,7 @@ const WholeDiv = styled.div`
     background-image: url(${backgroundImage2});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
     .div2-contentdiv {
       .div2-content-leftdiv {
@@ -212,7 +212,7 @@ const WholeDiv = styled.div`
     background-image: url(${backgroundImage3});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
     .div3-contentdiv {
       .div3-content-leftdiv {
@@ -243,7 +243,7 @@ const WholeDiv = styled.div`
     background-image: url(${backgroundImage4});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     color: white;
 
     .div4-contentdiv {
@@ -275,7 +275,7 @@ const WholeDiv = styled.div`
     background-image: url(${backgroundImage5});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     color: white;
 
     .div5-contentdiv {
