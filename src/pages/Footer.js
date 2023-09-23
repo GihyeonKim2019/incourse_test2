@@ -14,7 +14,7 @@ function Footer() {
           <div className="business-name">와프 스토리</div>
           <div className="business-info-div">
             <div></div>
-            <div>이메일: warpstory@gmail.com</div>
+            <div>이메일: warpstory.business@gmail.com</div>
           </div>
           <div>@Warpstory Inc.</div>
         </div>
