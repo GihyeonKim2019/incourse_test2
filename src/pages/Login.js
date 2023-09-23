@@ -2,7 +2,6 @@ import styled from "styled-components";
 import loginBackgroundImage from "../images/background_f1.png";
 import logoSymbolImage from "../images/warp_logo_symbol.png";
 import GoogleSignin from "./GoogleSignin";
-// import loginIconGoogle from "../images/login_icon_google.png";
 import loginIconKakao from "../images/login_icon_kakao.png";
 import { useState } from "react";
 
