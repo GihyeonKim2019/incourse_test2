@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import logoTitleImage from "../images/logo_title.png";
+import logoTitleImage from "../images/warp_logo_title.png";
 import backgroundImage1 from "../images/us_background_1.png";
 import backgroundImage2 from "../images/us_background_2.png";
 import backgroundImage3 from "../images/us_background_3.png";
 import backgroundImage4 from "../images/us_background_4.png";
-import backgroundImage5 from "../images/us_background_5.png";
+import backgroundImage5 from "../images/warp_us_background_5.png";
 import iconArrowLeft from "../images/icon_arrow_left.png";
 
 function Us() {
@@ -21,8 +21,7 @@ function Us() {
               alt="incourse 인코스 비즈니스 뉴스레터 1인 기업가 디지털노마드 디지털 노마드"
             />
             <div className="div1-subtitle">
-              '지금 한국에서 하면 돈 되는 정보' <br></br>인코스 뉴스레터가
-              전합니다.
+              '지금 한국에서 하면 돈 되는 정보' <br></br>와프 스토리가 전합니다.
             </div>
             <div className="div1-content-text">
               포화된 시장, 똑같은 방법론 <br></br>이미 한국에서 퍼진 콘텐츠로는{" "}
@@ -31,7 +30,7 @@ function Us() {
               <br></br>글로벌 성공사례를 바탕으로<br></br>
               로컬에 적용하는 것이 가장 효과적입니다.<br></br> <br></br>무한
               경쟁의 시대에서 추월하고 싶다면<br></br> 매일 100명에게 열리는
-              <br></br> 인코스 뉴스레터에 도전해보세요.
+              <br></br> 와프 스토리에 도전해보세요.
             </div>
           </div>
         </div>
@@ -52,8 +51,8 @@ function Us() {
               똑같아져 차별성이 사라지겠죠. <br></br>
               <br></br>모두가 알 수 있는 정보는 <br></br>아무에게도 가치 없는
               정보입니다. <br></br>
-              <br></br>인코스는 한정된 정보의 힘을 믿고, <br></br>그렇기 때문에
-              정보의 공급을 제한합니다.
+              <br></br>와프 스토리는 한정된 정보의 힘을 믿고, <br></br>그렇기
+              때문에 정보의 공급을 제한합니다.
             </div>
           </div>
         </div>
@@ -72,9 +71,8 @@ function Us() {
               <br></br>
               글로벌에서 성공한 1인 기업가들의 성공 노하우는<br></br> ‘2023 현재
               지구에서 돈 가장 쉽게 버는 법’과 동치입니다. <br></br>
-              <br></br>인코스의 뉴스레터는 인터뷰를 기반으로 <br></br>1인
-              기업가들의 성공 노하우가 <br></br>현재 한국에 맞게 가공되어
-              담겼습니다.
+              <br></br>와프 스토리는 인터뷰를 기반으로 <br></br>1인 기업가들의
+              성공 노하우가 <br></br>현재 한국에 맞게 가공되어 담겼습니다.
             </div>
           </div>
         </div>
@@ -89,7 +87,7 @@ function Us() {
               <br></br>현재 비즈니스 생태계는 모든 것들이 <br></br>순식간에
               생겼다가 사라지곤 하죠. <br></br>
               <br></br>세상의 속도는 매우 빠릅니다. <br></br>
-              <br></br>인코스는 0.1초의 촌각을 다투는 상황에서<br></br>
+              <br></br>와프 스토리는 0.1초의 촌각을 다투는 상황에서<br></br>
               극도로 효율적인 당신의 팀입니다. <br></br>
               <br></br>당신이 경쟁에서 승리하여<br></br>
               최종적으로 ‘돈’을 가져갈 수 있도록 돕겠습니다.
@@ -105,10 +103,10 @@ function Us() {
               당신의 추월, 지금부터 시작입니다.
             </div>
             <div className="div5-content-text">
-              지금 회원가입 시 <br></br>한정 인원에 상관없이 글을 읽을 수 있는{" "}
-              <br></br>
-              <br></br>시드 티켓을 1장 지급합니다. <br></br>지금 회원가입하여{" "}
-              <br></br>인코스의 프리미엄 정보를 놓치지 마세요.
+              지금 회원가입 시 <br></br>얼리 커뮤니티 회원의 <br></br>
+              인증 티켓을 지급합니다. <br></br>
+              <br></br>지금 회원가입하여 <br></br>와프 스토리의 프리미엄 정보를
+              놓치지 마세요.
             </div>
             <div className="div5-buttondiv">
               <div className="div5-button-text">회원가입하기</div>
@@ -301,7 +299,7 @@ const WholeDiv = styled.div`
           margin-top: 120px;
           width: 404px;
           height: 97px;
-          background-color: #d80600;
+          background-color: #8e35ff;
           color: white;
           display: flex;
           justify-content: space-between;

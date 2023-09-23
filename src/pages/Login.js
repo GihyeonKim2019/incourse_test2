@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import loginBackgroundImage from "../images/background_f1.png";
-import logoSymbolImage from "../images/logo_symbol.png";
+import logoSymbolImage from "../images/warp_logo_symbol.png";
 import GoogleSignin from "./GoogleSignin";
-import loginIconGoogle from "../images/login_icon_google.png";
+// import loginIconGoogle from "../images/login_icon_google.png";
 import loginIconKakao from "../images/login_icon_kakao.png";
+import { useState } from "react";
 
 function Login() {
+  const [alertText, setAlertText] = useState("");
+
+  const kakaoClickHandle = async (e) => {
+    setAlertText("카카오 로그인은 현재 준비중입니다.");
+  };
+
   return (
     <WholeDiv>
       <div className="logindiv">
@@ -13,13 +20,13 @@ function Login() {
           <img
             className="logo-symbol-image"
             src={logoSymbolImage}
-            alt="인코스 1인 기업가 비즈니스 교육"
+            alt="와프 스토리 1인 기업가 비즈니스 교육"
           />
-          <div className="loginbox-text-1">가장 빠른 비즈니스 지름길,</div>
-          <div className="loginbox-text-2">인코스</div>
+          <div className="loginbox-text-1">가장 빠른 비즈니스 성공 사례,</div>
+          <div className="loginbox-text-2">와프 스토리</div>
           <div className="loginbox-buttonbox">
             <GoogleSignin />
-            <div className="buttondiv-kakao">
+            <div className="buttondiv-kakao" onClick={kakaoClickHandle}>
               <img
                 className="buttondiv-kakao-logo"
                 src={loginIconKakao}
@@ -29,6 +36,7 @@ function Login() {
                 카카오로 1초만에 로그인
               </div>
             </div>
+            <div className="alert-text">{alertText}</div>
           </div>
         </div>
       </div>
@@ -104,6 +112,12 @@ const WholeDiv = styled.div`
           }
         }
 
+        .buttondiv-google:hover {
+          cursor: pointer;
+          background-color: #f7f7f7;
+          transition: all 0.2s ease-out;
+        }
+
         .buttondiv-kakao {
           height: 60px;
           background-color: #fee500;
@@ -120,7 +134,20 @@ const WholeDiv = styled.div`
             margin-left: 15px;
           }
         }
+        .buttondiv-kakao:hover {
+          cursor: pointer;
+          background-color: #eed700;
+          transition: all 0.2s ease-out;
+        }
       }
     }
+  }
+
+  .alert-text {
+    margin-top: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

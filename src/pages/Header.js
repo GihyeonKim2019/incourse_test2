@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoTitleImg from "../images/logo_title.png";
+import logoTitleImg from "../images/warp_logo_title.png";
 import { Link } from "react-router-dom";
 import { auth } from "../firebase_config";
 import { useState, useEffect } from "react";
@@ -60,7 +60,7 @@ const WholeDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #d80600;
+  background: #8e35ff;
   height: 50px;
   font-family: Pretendard Variable;
 

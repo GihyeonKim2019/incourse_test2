@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logoTitleImg from "../images/logo_title.png";
+import logoTitleImg from "../images/warp_logo_title.png";
 
 function Footer() {
   return (
@@ -11,18 +11,12 @@ function Footer() {
           alt="인코스, 가장 빠른 비즈니스 지름길"
         />
         <div className="content-leftdiv">
-          <div className="business-name">(주)인코스코퍼레이션</div>
+          <div className="business-name">와프 스토리</div>
           <div className="business-info-div">
-            <div>
-              대표: 박채근 | 사업자등록번호: 302-81-777777 | 통신판매업
-              신고번호: 2020-영등포-7777
-            </div>
-            <div>
-              이메일: co@incourse.club | 주소: 서울시 동대문구 경희대로 26
-              감의원창업센터 414호
-            </div>
+            <div></div>
+            <div>이메일: warpstory@gmail.com</div>
           </div>
-          <div>@Incourse Inc.</div>
+          <div>@Warpstory Inc.</div>
         </div>
       </div>
     </WholeDiv>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import todayStoryThumbnail from "../images/today_story_thumbnail.png";
+import todayStoryThumbnail from "../images/today_story_thumbnail_101.png";
 import iconArrowLeft from "../images/icon_arrow_left.png";
 import { Link, useNavigate } from "react-router-dom";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
@@ -29,6 +29,8 @@ function Home() {
   // const currentTime = new Date();
   // const [listings, setListings] = useState(null);
   // const [loading, setLoading] = useState(true);
+  const [alertText, setAlertText] = useState("");
+
   const [todayStory, setTodayStory] = useState({
     articleTitle: "",
     articleNum: 1,
@@ -131,18 +133,21 @@ function Home() {
     const isLogined = localStorage.getItem("incourse_islogined");
     console.log("enterButtonOnClick executed");
     if (enterButtonClickable && isLogined === "true") {
+      console.log("navigating to article : ", todayStory.articleNum);
       navigate(`/storyview/${todayStory.articleNum}`);
     } else if (!enterButtonClickable && isLogined) {
       console.log("아티클 soldout");
     } else if (!isLogined) {
       navigate("/login");
+    } else {
+      setAlertText("로그인이 필요합니다.");
     }
   }
 
   return (
     <WholeDiv>
       <div className="today-story-div">
-        <div className="today-story-header-text">오늘의 스토리</div>
+        <div className="today-story-header-text">오늘의 와프스토리</div>
         <div className="today-story-time">
           {firestoreTimestampToFormattedDate(todayPublishTime)}
           <div className="today-story-expected-text">{expectedText}</div>
@@ -163,14 +168,18 @@ function Home() {
                 {Math.max(100 - todayStory.joiners.length, 0)}명 남았어요!
               </div>
               <div className="ticket-info-text">
-                인코스의 스토리는 하루 동안만 오픈되며, 매일 100명만 읽을 수
-                있습니다.
+                와프 스토리는 매일 100명만 읽을 수 있습니다.
+                {/* <br />
+                <br /> *읽기 버튼은 로그인 시 활성화 됩니다. */}
               </div>
             </div>
             <div>
               <div className="division-line"></div>
               <div className="business-info-title">사업 정보</div>
               <div className="business-info-div">
+                현재 사업 정보가 비공개 상태입니다.
+              </div>
+              {/* <div className="business-info-div">
                 <div className="business-info-li">
                   <div className="business-info-li-text">월 순익</div>
                   <div className="business-info-li-subtext">
@@ -187,7 +196,7 @@ function Home() {
                 </div>
               </div>
               <div className="apex-title-text">Apex moment</div>
-              <div className="apex-content-text">{todayStory.apexText}</div>
+              <div className="apex-content-text">{todayStory.apexText}</div> */}
               <div
                 className={`join-button-div ${
                   enterButtonClickable ? "clickable" : ""
@@ -197,20 +206,21 @@ function Home() {
                 <div className="join-button-text">{buttonText}</div>
               </div>
               <div className="join-info-div">
-                <div className="join-info-time">08:11:19</div>
-                <div className="join-info-text">후 열람 불가</div>
+                <div className="alert-text">{alertText}</div>
+                {/* <div className="join-info-time">08:11:19</div>
+                <div className="join-info-text">후 열람 불가</div> */}
               </div>
             </div>
           </div>
         </div>
       </div>
       <div className="incourse-introduce-div">
-        <div className="incourse-introduce-header-text">What's Incourse?</div>
+        <div className="incourse-introduce-header-text">What's Warpstory?</div>
         <div className="incourse-introduce-contentdiv">
           <div className="incourse-introduce-content-text">
-            인코스는 글로벌 기준 가장 효율적인 방법으로 비즈니스를 성공시킬 수
-            있는 프리미엄 정보를 극소수의 사람에게 제공하는 뉴스레터입니다. 매일
-            오전 11시에 100개의 한정 수량이 오픈되며, 소진 시 열람이 불가합니다.
+            와프 스토리는 글로벌 기준 가장 효율적인 방법으로 비즈니스를 성공시킬
+            수 있는 프리미엄 정보를 극소수의 사람에게 제공하는 뉴스레터입니다.
+            매주 토요일 100개의 한정 수량이 오픈되며, 소진 시 열람이 불가합니다.
           </div>
           <Link to={"/us"} className="incourse-introduce-content-buttondiv">
             <div className="incourse-introduce-content-button-text">
@@ -219,7 +229,7 @@ function Home() {
             <img
               src={iconArrowLeft}
               className="incourse-introduce-content-button-logo"
-              alt="incourse 인코스 더 알아보기"
+              alt="incourse 오버테이크 더 알아보기"
             />
           </Link>
         </div>
@@ -249,12 +259,13 @@ const WholeDiv = styled.div`
       display: flex;
     }
     .today-story-expected-text {
-      color: #d80600;
+      color: #8e35ff;
       margin-left: 11px;
     }
     .today-story-contentdiv {
       margin-top: 18px;
       display: flex;
+      flax-wrap: wrap !important;
     }
 
     .today-story-leftdiv {
@@ -289,7 +300,7 @@ const WholeDiv = styled.div`
 
       .ticket-info-div {
         .ticket-count-text {
-          color: #d80600;
+          color: #8e35ff;
           font-size: 22px;
           font-weight: 600;
           margin-bottom: 13px;
@@ -312,7 +323,7 @@ const WholeDiv = styled.div`
       }
 
       .business-info-div {
-        margin-bottom: 40px;
+        margin-bottom: 200px;
 
         .business-info-li {
           display: flex;
@@ -345,7 +356,7 @@ const WholeDiv = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #d80600;
+        background-color: #8e35ff;
         height: 85px;
         color: white;
         margin-bottom: 23px;
@@ -363,13 +374,18 @@ const WholeDiv = styled.div`
         opacity: 1;
       }
 
+      .join-button-div.clickable:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-out;
+      }
+
       .join-info-div {
         display: flex;
         justify-content: end;
         font-size: 16px;
 
         .join-info-time {
-          color: #d70500;
+          color: #8e35ff;
         }
       }
     }
@@ -389,6 +405,7 @@ const WholeDiv = styled.div`
     .incourse-introduce-contentdiv {
       margin-top: 20px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
 
       .incourse-introduce-content-text {
@@ -416,6 +433,11 @@ const WholeDiv = styled.div`
           width: 18px;
           margin-right: 30px;
         }
+      }
+
+      .incourse-introduce-content-buttondiv:hover {
+        opacity: 0.8;
+        transition: all 0.2s ease-out;
       }
     }
   }
