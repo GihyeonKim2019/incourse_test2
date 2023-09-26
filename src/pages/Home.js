@@ -28,7 +28,7 @@ function firestoreTimestampToFormattedDate(timestamp) {
 function Home() {
   // const currentTime = new Date();
   // const [listings, setListings] = useState(null);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [alertText, setAlertText] = useState("");
 
   const [todayStory, setTodayStory] = useState({
@@ -87,7 +87,7 @@ function Home() {
 
       console.log("야", listings);
       // setListings(listings);
-      // setLoading(false);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -109,6 +109,7 @@ function Home() {
             minutes
           ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`
         );
+
         setExpectedText("오픈예정");
         setPublishTimePassed(false);
       } else {
@@ -121,11 +122,12 @@ function Home() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [todayPublishTime, fetchListings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchListings, loading]);
 
-  useEffect(() => {
-    fetchListings();
-  }, [fetchListings]);
+  // useEffect(() => {
+  //   fetchListings();
+  // }, [fetchListings]);
 
   const navigate = useNavigate();
 
