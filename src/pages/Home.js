@@ -243,6 +243,8 @@ function Home() {
 export default Home;
 
 const WholeDiv = styled.div`
+  
+
   a {
     text-decoration: none;
   }
@@ -267,7 +269,7 @@ const WholeDiv = styled.div`
     .today-story-contentdiv {
       margin-top: 18px;
       display: flex;
-      flax-wrap: wrap !important;
+      flex-wrap: nowrap;
     }
 
     .today-story-leftdiv {
@@ -441,6 +443,32 @@ const WholeDiv = styled.div`
         opacity: 0.8;
         transition: all 0.2s ease-out;
       }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0 15px;
+
+    .today-story-contentdiv {
+      flex-wrap: wrap !important;
+    }
+
+    .today-story-title {
+      margin-top: 10px !important;
+      margin-bottom: 18px;
+    }
+
+    .today-story-rightdiv {
+      padding: 15px 0 !important;
+      background-color: transparent !important;
+    }
+
+    .business-info-div {
+      margin-bottom: 40px !important;
+    }
+
+    .incourse-introduce-content-text {
+      margin-bottom: 10px;
     }
   }
 `;

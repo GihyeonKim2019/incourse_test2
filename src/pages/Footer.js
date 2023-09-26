@@ -48,4 +48,9 @@ const WholeDiv = styled.div`
   .business-info-div {
     margin-bottom: 16px;
   }
+
+  @media only screen and (max-width: 768px) {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 `;
