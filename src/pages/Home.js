@@ -437,7 +437,7 @@ const WholeDiv = styled.div`
       .incourse-introduce-content-buttondiv {
         flex-basis: 340px;
         height: 80px;
-        background-color: black;
+        background-color: #252525;
         display: flex;
         justify-content: space-between;
         align-items: center;
