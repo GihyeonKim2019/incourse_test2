@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import todayStoryThumbnail from "../images/today_story_thumbnail_101.png";
+// import todayStoryThumbnail from "../images/today_story_thumbnail_101.png";
 import iconArrowLeft from "../images/icon_arrow_left.png";
 import { Link, useNavigate } from "react-router-dom";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
@@ -66,6 +66,7 @@ function Home() {
         soldoutTime: listings[0].data.soldoutTime,
         apexText: listings[0].data.apexText,
         isSoldout: listings[0].data.isSoldout,
+        thumbnail: listings[0].data.thumbnail,
       });
 
       setTodayPublishTime(listings[0].data.publishTime);
@@ -147,7 +148,7 @@ function Home() {
   }
 
   return (
-    <WholeDiv>
+    <WholeDiv todayThumbnail={todayStory.thumbnail}>
       <div className="today-story-div">
         <div className="today-story-header-text">오늘의 와프스토리</div>
         <div className="today-story-time">
@@ -156,11 +157,13 @@ function Home() {
         </div>
         <div className="today-story-contentdiv">
           <div className="today-story-leftdiv">
-            <img
+            <div
               className="today-story-image"
-              src={todayStoryThumbnail}
-              alt="today story"
-            />
+              // src={todayStory.thumbnail}
+              // alt="today story"
+            >
+              <div className="backdrop"></div>
+            </div>
             <div className="today-story-title">{todayStory.articleTitle}</div>
           </div>
           <div className="today-story-centerdiv"></div>
@@ -243,8 +246,6 @@ function Home() {
 export default Home;
 
 const WholeDiv = styled.div`
-  
-
   a {
     text-decoration: none;
   }
@@ -277,7 +278,22 @@ const WholeDiv = styled.div`
       flex-shrink: 1;
 
       .today-story-image {
+        position: relative;
         width: 100%;
+        height: 0;
+        padding-bottom: 100%;
+        background-image: url(${(props) => props.todayThumbnail});
+        background-size: cover;
+        background-position: center;
+
+        .backdrop {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 128, 0.1);
+          backdrop-filter: blur(10px);
+          z-index: 2;
+        }
       }
 
       .today-story-title {
